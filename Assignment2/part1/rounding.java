@@ -1,3 +1,9 @@
+/*
+	Gregory Yentz
+	gcy16
+	COP3252
+*/
+
 import java.lang.*;
 import java.util.*;
 
