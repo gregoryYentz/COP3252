@@ -8,36 +8,33 @@ public class guess{
 	public static void main(String[] args){
 		int x = 1;
 		int y = 1;
-		int w = 1;
 		Scanner userInput = new Scanner(System.in);
 		int guess;
 		while(x==1){
+			System.out.println("Guess a number between 1 and 1000");
 			int z = Math.abs((randomNumbers.nextInt()%1000)+1);
-			System.out.println(z);
+//			System.out.println(z);
 			y=1;
 			while(y==1){
 				guess = userInput.nextInt();
+				userInput.nextLine();
 				if(guess==z){
 					System.out.print("Congratulations. You guessed the number!\n");
-					w=1;
-					while(w==1){	
-						System.out.print("Play Again? [Y?N] \n");
-						String choice = userInput.nextLine();
+					while(true){	
+						System.out.print("Play Again? [Y/N] ");
+						String choice = userInput.nextLine();						
 						if(choice.equals("Y") || choice.equals("y") || choice.equals("Yes") || choice.equals("yes") || choice.equals("YES")){
-							w=0;
 							y=0;
 							x=1;
+							break;
 						}
-					//	else if(choice.equals("N") || choice.equals("n") || choice.equals("No") || choice.equals("no") || choice.equals("NO")){
-					//		w=0;
-					//		y=0;
-					//		x=0;
-					//	}
-						else{
-					//		System.out.println("Invalid Input!");
-							w=0;
+						else if(choice.equals("N") || choice.equals("n") || choice.equals("No") || choice.equals("no") || choice.equals("NO")){
 							y=0;
 							x=0;
+							break;
+						}
+						else{
+							System.out.println("Invalid Input!");
 						}
 					}
 				}
