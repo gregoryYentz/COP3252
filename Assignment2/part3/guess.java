@@ -13,7 +13,7 @@ public class guess{
 		while(x==1){
 			System.out.println("Guess a number between 1 and 1000");
 			int z = Math.abs((randomNumbers.nextInt()%1000)+1);
-			System.out.println(z);
+//			System.out.println(z);
 			y=1;
 			while(y==1){
 				guess = userInput.nextInt();
