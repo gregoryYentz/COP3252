@@ -48,46 +48,29 @@ public class Time2{
 		if(hour<0||hour>=24){
 			throw new IllegalArgumentException("hour must be 0-23");
 		}
-		int temp = this.second;
-		for(int i = 0; i< 24; i++){
-				if(temp-3600 < 0){
-					this.second = this.second + (3600*hour) - (3600*i);
-				}
-				else{
-					temp=temp-3600;
-					continue;
-				}
-		}
+		this.second = this.second - ((this.second/3600)*3600) + (hour*3600);
 	}
 
 	public void setMinute(int minute){
-		if (minute < 0 && minute >= 60){
+		if (minute < 0 || minute >= 60){
 			throw new IllegalArgumentException("minute must be 0-59");
 		}
-		int temp = this.second;
-		for(int i = 0; i<60; i++){ 
-			if(temp-60 < 0){
-				this.second = this.second + (60*minute) - (60*i);
-			}
-			else{
-				temp=temp-60;
-				continue;
-			}
-		}
+		this.second = this.second - (((this.second%3600)/60)*60) + (minute*60);
 	}
 	
 	public void setSecond(int second){
-		if (second >= 0 && second < 60)
-		throw new IllegalArgumentException("second must be 0-59");
+		if (second < 0 || second >= 60){
+			throw new IllegalArgumentException("second must be 0-59");
+		}
 		this.second = this.second-(this.second%60)+second;
 	}
 
 	public int getHour(){
-		return (second-getMinute()-getSecond())%24;
+		return (second-(getMinute()*60)-getSecond())/3600;
 	}
 
 	public int getMinute(){
-		return (second-getSecond())%60;
+		return ((second-getSecond())%3600)/60;
 	}
 
 	public int getSecond(){
